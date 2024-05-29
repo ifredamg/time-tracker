@@ -1,5 +1,5 @@
 import './App.css';
-import SideBar from './components/SideBar';
+import SideBar from './components/Navbar';
 import Route from './components/Route';
 import TimeTrackerPage from './pages/TimeTrackerPage';
 import CalendarPage from './pages/CalendarPage';
@@ -13,35 +13,33 @@ import { Row, Col } from "react-bootstrap";
 function App() {
   return (
     <div className="container-fuild">
-      <Row>
-        <Col xs={2}>
-          <SideBar />
-        </Col>
+      <div>
+        <SideBar />
+      </div>
 
-        <Col xs={10}>
-          <Route path="/">
-            <TimeTrackerPage />
-          </Route>
-          <Route path="/calendar">
-            <CalendarPage />
-          </Route>
-          <Route path="/dashboard">
-            <DashboardPage />
-          </Route>
-          <Route path="/reports">
-            <ReportsPage />
-          </Route>
-          <Route path="/projects">
-            <ProjectsPage />
-          </Route>
-          <Route path="/clients">
-            <ClientsPage />
-          </Route>
-          <Route path="/tags">
-            <TagsPage />
-          </Route>
-        </Col>
-      </Row>
+      <div style={{ marginTop: 70 }}>
+        <Route path="/">
+          <TimeTrackerPage />
+        </Route>
+        <Route path="/calendar">
+          <CalendarPage />
+        </Route>
+        <Route path="/dashboard">
+          <DashboardPage />
+        </Route>
+        <Route path="/reports">
+          <ReportsPage />
+        </Route>
+        <Route path="/projects">
+          <ProjectsPage />
+        </Route>
+        <Route path="/clients">
+          <ClientsPage />
+        </Route>
+        <Route path="/tags">
+          <TagsPage />
+        </Route>
+      </div>
     </div>
   );
 }
