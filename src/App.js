@@ -8,7 +8,6 @@ import ReportsPage from './pages/ReportsPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ClientsPage from './pages/ClientsPage';
 import TagsPage from './pages/TagsPage';
-import { Row, Col } from "react-bootstrap";
 
 function App() {
   return (
