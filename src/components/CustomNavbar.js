@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import useNavigation from "../hooks/use-navigation";
 
-function Sidebar() {
+function CustomNavbar() {
     const { navigate, currentPath } = useNavigation();
 
     const links = [
@@ -23,7 +23,7 @@ function Sidebar() {
 
     const renderedLinks = links.map((link) => {
         return (
-            <Nav.Link eventKey={link.path}>
+            <Nav.Link key={link.path} eventKey={link.path}>
                 {link.label}
             </Nav.Link>
         );
@@ -47,4 +47,4 @@ function Sidebar() {
     );
 }
 
-export default Sidebar;
+export default CustomNavbar;

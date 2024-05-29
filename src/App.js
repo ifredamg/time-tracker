@@ -1,5 +1,5 @@
 import './App.css';
-import SideBar from './components/Navbar';
+import CustomNavbar from './components/CustomNavbar';
 import Route from './components/Route';
 import TimeTrackerPage from './pages/TimeTrackerPage';
 import CalendarPage from './pages/CalendarPage';
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="container-fuild">
       <div>
-        <SideBar />
+        <CustomNavbar />
       </div>
 
       <div style={{ marginTop: 70 }}>
