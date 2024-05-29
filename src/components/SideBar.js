@@ -12,11 +12,15 @@ function Sidebar() {
     ];
 
     const renderedLinks = links.map((link) => {
-        return <Link key={link.label} to={link.path} className="ps-2 pe-2" activeClassName="fw-bold">{link.label}</Link>;
+        return (
+            <div>
+                <Link key={link.label} to={link.path} className="ps-2 pe-2" activeClassName="fw-bold">{link.label}</Link>
+            </div>
+        );
     })
 
     return (
-        <div className="sticky top-0 flex flex-col items-start">
+        <div className="sticky-top top-0 flex flex-col items-start">
             {renderedLinks}
         </div>
     );
