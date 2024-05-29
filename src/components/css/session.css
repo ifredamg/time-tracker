@@ -1,3 +1,28 @@
+.session-create-row {
+    border: 1px solid #C6D2D9 !important;
+    box-shadow: 0 0 20px #0000001a;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.session-create-row .timer {
+    font-weight: bold;
+    font-size: 20px;
+    width: 120px;
+    text-align: center;
+    display: block;
+    line-height: 35px;
+    border-left: 1px solid #C6D2D9;
+}
+
+.session-create-row .separator {
+    border-right: 1px solid #C6D2D9;
+}
+
+.session-create-row .btn-start-stop {
+    min-width: 90px;
+}
+
 .session-line {
     border: 1px solid gray;
 }

@@ -1,0 +1,16 @@
+input {
+    min-height: 40px;
+}
+
+.input-ghost-mode {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    outline: 0;
+}
+
+.input-ghost-mode:hover, .input-ghost-mode:focus {
+    outline: 0;
+    border: 1px solid #C6D2D9;
+    box-shadow: none;
+}

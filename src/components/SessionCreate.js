@@ -1,15 +1,29 @@
+import { useState } from 'react';
+import InputText from "./Input/InputText";
+import classnames from 'classnames';
 
 function SessionCreate() {
+    const [isWorking, setIsWorking] = useState(false);
+
+    const handleClick = () => {
+        setIsWorking(!isWorking);
+    }
+
     return (
-        <div className="row">
+        <div className="row session-create-row">
             <div className="col-12 col-md-6">
-                <input type="text" className="w-100" />
+                <InputText placeholder="What are you working on?" className="w-100" />
             </div>
 
             <div className="col-12 col-md-6">
-                <div className="float-end">
-                    <span>00H00</span>
-                    <button className="btn btn-info ms-3">Start</button>
+                <div className="d-inline-flex float-end">
+                    <span className="timer">00:00:00</span>
+                    <button onClick={handleClick} className={classnames('btn btn-start-stop', {
+                        "btn-primary": !isWorking,
+                        "btn-danger": isWorking
+                    })}>
+                        {!isWorking ? "START" : "STOP"}
+                    </button>
                 </div>
             </div>
         </div>
