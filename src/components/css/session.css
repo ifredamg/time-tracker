@@ -12,11 +12,11 @@
     text-align: center;
     display: block;
     line-height: 35px;
-    border-left: 1px solid #C6D2D9;
+    border-left: 1px dotted #C6D2D9;
 }
 
 .session-create-row .separator {
-    border-right: 1px solid #C6D2D9;
+    border-right: 1px dotted #C6D2D9;
 }
 
 .session-create-row .btn-start-stop {
@@ -25,11 +25,21 @@
 
 .session-card-body {
     border: 1px solid #C6D2D9;
+    padding: 0px !important;
 }
 
 .session-card-body-line {
+    padding: 15px;
     transition: box-shadow .2s ease-in-out;
+    align-items: center;
 }
+
+.session-card-body-line .session-bagde-list {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.session-card-body-line .column
 
 .session-card-body-line:not(:last-child) {
     border-bottom: 1px solid #C6D2D9;

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { NavigationProvider } from './context/navigation';
+import { SessionsProvider } from './context/sessions';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -20,6 +21,8 @@ const root = ReactDOM.createRoot(el);
 
 root.render(
     <NavigationProvider>
-        <App />
+        <SessionsProvider>
+            <App />
+        </SessionsProvider>
     </NavigationProvider>
 );
