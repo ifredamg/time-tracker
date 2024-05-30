@@ -11,12 +11,14 @@ import TagsPage from './pages/TagsPage';
 
 function App() {
   return (
-    <div className="container-fuild">
-      <div>
-        <CustomNavbar />
+    <div>
+      <div className="container-fuild">
+        <div>
+          <CustomNavbar />
+        </div>
       </div>
 
-      <div style={{ marginTop: 70 }}>
+      <div className="container" style={{ marginTop: 70 }}>
         <Route path="/">
           <TimeTrackerPage />
         </Route>
@@ -38,8 +40,7 @@ function App() {
         <Route path="/tags">
           <TagsPage />
         </Route>
-      </div>
-    </div>
+      </div></div>
   );
 }
 

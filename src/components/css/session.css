@@ -23,6 +23,18 @@
     min-width: 90px;
 }
 
-.session-line {
-    border: 1px solid gray;
+.session-card-body {
+    border: 1px solid #C6D2D9;
+}
+
+.session-card-body-line {
+    transition: box-shadow .2s ease-in-out;
+}
+
+.session-card-body-line:not(:last-child) {
+    border-bottom: 1px solid #C6D2D9;
+}
+
+.session-card-body-line:hover {
+    box-shadow: 0 0 20px #0000001a;
 }

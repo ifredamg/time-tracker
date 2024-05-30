@@ -1,4 +1,4 @@
-import './css/Inputs.css';
+import './css/inputs.css';
 import classNames from "classnames";
 
 function InputText({ className, ...rest }) {

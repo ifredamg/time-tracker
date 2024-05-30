@@ -3,11 +3,11 @@ import SessionCreate from '../components/SessionCreate';
 
 function SessionPage() {
     return (
-        <div className="container">
+        <div>
             <h1>Time Tracker</h1>
 
             <SessionCreate />
-            <SessionCard />
+            <SessionCard className="mt-3" />
         </div>
     );
 }

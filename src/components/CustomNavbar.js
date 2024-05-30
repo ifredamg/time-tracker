@@ -32,7 +32,7 @@ function CustomNavbar() {
     return (
         <Navbar collapseOnSelect expand="lg" className="main-navigation bg-body-tertiary" fixed="top">
             <Container>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand onClick={() => handleSelect("/")}>
             <img alt="Time Tracker" src="/logo128.png" width="30" height="30" className="d-inline-block align-top" />{' '}
             Time Tracker
           </Navbar.Brand>
