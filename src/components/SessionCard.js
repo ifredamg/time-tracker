@@ -1,5 +1,5 @@
 import './css/session.css';
-import Session from './Session';
+import SessionLine from './SessionLine';
 import classnames from 'classnames';
 
 function SessionCard({ className }) {
@@ -11,9 +11,9 @@ function SessionCard({ className }) {
             </div>
 
             <div className="session-card-body">
-                <Session />
-                <Session />
-                <Session />
+                <SessionLine />
+                <SessionLine />
+                <SessionLine />
             </div>
         </div>
     );

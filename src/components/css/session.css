@@ -5,7 +5,7 @@
     padding-bottom: 15px;
 }
 
-.session-create-row .timer {
+.session-create-row .timer, .session-card-body-line .timer {
     font-weight: bold;
     font-size: 20px;
     width: 120px;
