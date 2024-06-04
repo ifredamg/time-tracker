@@ -1,18 +1,30 @@
 import { useState } from 'react';
 import InputText from "./Input/InputText";
 import classnames from 'classnames';
+import useSessionsContext from '../hooks/use-sessions-context';
 
 function SessionCreate() {
+    const [description, setDescription] = useState('');
     const [isWorking, setIsWorking] = useState(false);
+    const { createSession } = useSessionsContext();
+
+    const handleChange = (event) => {
+        setDescription(event.target.value);
+    }
 
     const handleClick = () => {
+        if(isWorking) {
+            createSession(description);
+            setDescription('');
+        }
+        
         setIsWorking(!isWorking);
     }
 
     return (
         <div className="row session-create-row">
             <div className="col-12 col-md-6">
-                <InputText placeholder="What are you working on?" className="w-100" />
+                <InputText onChange={handleChange} placeholder="What are you working on?" className="w-100" />
             </div>
 
             <div className="col-12 col-md-6">
