@@ -35,6 +35,7 @@ function SessionCreate() {
             createSession(startDate, new Date(), description);
             setStartDate(null);
             setDescription('');
+            setSeconds(0);
         }
         else {
             setStartDate(new Date());
@@ -55,7 +56,7 @@ function SessionCreate() {
     return (
         <div className="row session-create-row">
             <div className="col-12 col-md-6">
-                <InputText onChange={handleChange} placeholder="What are you working on?" className="w-100" />
+                <InputText onChange={handleChange} value={description} placeholder="What are you working on?" className="w-100" />
             </div>
 
             <div className="col-12 col-md-6">
