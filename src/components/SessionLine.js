@@ -9,15 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function SessionLine({ lineData }) {
     const [isWorking, setIsWorking] = useState(false);
     const [description, setDescription] = useState(lineData.description);
-    const [startDate, setStartDate] = useState(lineData.start_date);
-    const [endDate, setEndDate] = useState(lineData.start_date);
     const [difference, setDifference] = useState(0);
 
     useEffect(() => {
         calculateDifference();
-    }, []);
+    }, [lineData.id]);
+
     const calculateDifference = () => {
-        const differenceInMs = endDate - startDate;
+        const differenceInMs = new Date(lineData.end_date) - new Date(lineData.start_date);
         const differenceInSeconds = differenceInMs / 1000;
         setDifference(differenceInSeconds);
     };
@@ -34,7 +33,7 @@ function SessionLine({ lineData }) {
         const getFormattedTime = (time) => time < 10 ? `0${time}` : time;
         const hrs = Math.floor(seconds / 3600);
         const mins = Math.floor((seconds % 3600) / 60);
-        const secs = seconds % 60;
+        const secs = Math.round(seconds % 60);
 
         return `${getFormattedTime(hrs)}:${getFormattedTime(mins)}:${getFormattedTime(secs)}`;
     };
