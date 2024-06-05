@@ -39,10 +39,7 @@ function SessionsProvider({ children }) {
     };
 
     const createSession = async (startDate, endDate, description, project) => {
-        const fetchResponse = await axios.get('http://localhost:3001/sessions');
-        const allSessions = fetchResponse.data;
-
-        const maxid = allSessions.reduce((maxId, session) => {
+        const maxid = sessions.reduce((maxId, session) => {
             return session.id > maxId ? session.id : maxId;
         }, 0);
 
