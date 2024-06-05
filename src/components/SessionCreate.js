@@ -1,25 +1,56 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InputText from "./Input/InputText";
 import classnames from 'classnames';
 import useSessionsContext from '../hooks/use-sessions-context';
 
 function SessionCreate() {
-    const [description, setDescription] = useState('');
     const [isWorking, setIsWorking] = useState(false);
+    const [seconds, setSeconds] = useState(0);
+
+    const [startDate, setStartDate] = useState(null);
+    const [description, setDescription] = useState('');
+
     const { createSession } = useSessionsContext();
+
+    useEffect(() => {
+        let interval = null;
+
+        if (isWorking) {
+            interval = setInterval(() => {
+                setSeconds(seconds => seconds + 1);
+            }, 1000);
+        } else if (!isWorking && seconds !== 0) {
+            clearInterval(interval);
+        }
+
+        return () => clearInterval(interval);
+    }, [isWorking, seconds]);
 
     const handleChange = (event) => {
         setDescription(event.target.value);
     }
 
     const handleClick = () => {
-        if(isWorking) {
-            createSession(description);
+        if (isWorking) {
+            createSession(startDate, new Date(), description);
+            setStartDate(null);
             setDescription('');
         }
-        
+        else {
+            setStartDate(new Date());
+        }
+
         setIsWorking(!isWorking);
     }
+
+    const formatTime = (seconds) => {
+        const getFormattedTime = (time) => time < 10 ? `0${time}` : time;
+        const hrs = Math.floor(seconds / 3600);
+        const mins = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+
+        return `${getFormattedTime(hrs)}:${getFormattedTime(mins)}:${getFormattedTime(secs)}`;
+    };
 
     return (
         <div className="row session-create-row">
@@ -29,7 +60,9 @@ function SessionCreate() {
 
             <div className="col-12 col-md-6">
                 <div className="d-inline-flex float-end">
-                    <span className="timer">00:00:00</span>
+                    <span className="timer">
+                        {formatTime(seconds)}
+                    </span>
                     <button onClick={handleClick} className={classnames('btn btn-start-stop', {
                         "btn-primary": !isWorking,
                         "btn-danger": isWorking

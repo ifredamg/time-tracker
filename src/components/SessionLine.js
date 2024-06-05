@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function SessionLine({ lineData }) {
     const [isWorking, setIsWorking] = useState(false);
-    const [description, setDescription] = useState(lineData.Descricao);
+    const [description, setDescription] = useState(lineData.description);
 
     const handleChangeDescription = (event) => {
         setDescription(event.target.value);
@@ -18,8 +18,8 @@ function SessionLine({ lineData }) {
         setIsWorking(!isWorking);
     }
 
-    const renderedBadges = lineData.Classificacoes != null ? lineData.Classificacoes.map((classificacao) => {
-        return <Badge bg={classificacao.Cor}>{classificacao.Nome}</Badge>
+    const renderedBadges = lineData.tags != null ? lineData.tags.map((tag) => {
+        return <Badge bg={tag.color}>{tag.name}</Badge>
     }) : <FontAwesomeIcon icon="fa-solid fa-tags" />;
 
     return (

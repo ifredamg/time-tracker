@@ -12,13 +12,13 @@ function SessionsProvider({ children }) {
         setSessions(response.data);
     }, []);
 
-    const editSessionById = async (IDTempo, Descricao) => {
-        const response = await axios.put(`http://localhost:3001/sessions/${IDTempo}`, {
-            Descricao,
+    const editSessionById = async (id, description) => {
+        const response = await axios.put(`http://localhost:3001/sessions/${id}`, {
+            description,
         });
 
         const updatedSessions = sessions.map((session) => {
-            if (session.IDTempo === IDTempo) {
+            if (session.id === id) {
                 return { ...session, ...response.data };
             }
 
@@ -28,19 +28,32 @@ function SessionsProvider({ children }) {
         setSessions(updatedSessions);
     };
 
-    const deleteSessionById = async (IDTempo) => {
-        await axios.delete(`http://localhost:3001/sessions/${IDTempo}`);
+    const deleteSessionById = async (id) => {
+        await axios.delete(`http://localhost:3001/sessions/${id}`);
 
         const updatedSessions = sessions.filter((session) => {
-            return session.IDTempo !== IDTempo;
+            return session.id !== id;
         });
 
         setSessions(updatedSessions);
     };
 
-    const createSession = async (description) => {
+    const createSession = async (startDate, endDate, description, project) => {
+        const fetchResponse = await axios.get('http://localhost:3001/sessions');
+        const allSessions = fetchResponse.data;
+
+        const maxid = allSessions.reduce((maxId, session) => {
+            return session.id > maxId ? session.id : maxId;
+        }, 0);
+
+        const newID = maxid + 1;
+
         const response = await axios.post('http://localhost:3001/sessions', {
-            Descricao: description,
+            id: newID,
+            description,
+            start_date: startDate,
+            end_date: endDate,
+            project,
         });
 
         const updatedSessions = [...sessions, response.data];
