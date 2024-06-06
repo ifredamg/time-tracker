@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import CustomNavbar from './components/CustomNavbar';
 import Route from './components/Route';
@@ -18,9 +18,15 @@ import SessionsContext from './context/sessions';
 function App() {
   const { fetchSessions } = useContext(SessionsContext);
 
+  const [currentSession, setCurrentSession] = useState(null);
+
   useEffect(() => {
     fetchSessions();
   }, [fetchSessions]);
+
+  const startStopSession = () => {
+    console.log(currentSession);
+  };
 
   return (
     <div>
@@ -32,7 +38,7 @@ function App() {
 
       <div className="container" style={{ marginTop: 70, marginBottom: 30 }}>
         <Route path="/">
-          <TimeTrackerPage />
+          <TimeTrackerPage currentSession={setCurrentSession} currentSessionStartStop={startStopSession} />
         </Route>
         <Route path="/calendar">
           <CalendarPage />

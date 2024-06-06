@@ -3,7 +3,7 @@ import InputText from "./Input/InputText";
 import classnames from 'classnames';
 import useSessionsContext from '../hooks/use-sessions-context';
 
-function SessionCreate() {
+function SessionCreate({ currentSession, onDescriptionChange, onStartStopClick }) {
     const [isWorking, setIsWorking] = useState(false);
     const [seconds, setSeconds] = useState(0);
 
@@ -28,6 +28,8 @@ function SessionCreate() {
 
     const handleChange = (event) => {
         setDescription(event.target.value);
+        if(onDescriptionChange != null)
+            onDescriptionChange(event.target.value);
     }
 
     const handleClick = () => {
@@ -42,6 +44,9 @@ function SessionCreate() {
         }
 
         setIsWorking(!isWorking);
+
+        if(onStartStopClick != null)
+            onStartStopClick();
     }
 
     const formatTime = (seconds) => {
